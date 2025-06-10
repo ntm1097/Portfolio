@@ -7,41 +7,51 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/73548970e4.js" crossorigin="anonymous"></script>
     <script src="app.js" defer></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "R0_BeGoyZAbNFrQUu",
+      });
+   })();
+</script>
 </head>
 <body>
-    <section id="landing-page">
+    <section id="landing-page" onmousemove="moveBackground(event)">
         <nav>
             <figure>
                 <img id="personal-logo" src="./assets/My Logo.svg" alt="">
             </figure>
             <ul class="nav__links--list">
-              <li class="nav__link">
-                <a href="" class="
+              <li class="nav__link" onclick="toggleModal()">
+                <a href="#about" class="
                 nav__link--anchor
                 link__hover-effect
                 link__hover-effect--black
                 ">About</a>
               </li>
               <li class="nav__link">
-                <a href="" class="
+                <a href="#projects" class="
                 nav__link--anchor
                 link__hover-effect
                 link__hover-effect--black
                 ">Projects</a>
               </li>
-              <li class="nav__link">
+              <li class="nav__link" onclick="toggleModal()" >
                 <a href="" class="
                 nav__link--anchor
                 link__hover-effect
                 link__hover-effect--black
                 ">Contact</a>
               </li>
-              <li class="nav__link">
-                <a href="" class="
+              <li class="nav__link" onclick="toggleContrast()">
+                <a href="#" class="
                 nav__link--anchor
                 link__hover-effect
                 link__hover-effect--black
-                "><i class="fa-solid fa-circle-half-stroke fa-adjust click"></i></a>
+                "><i class="fa-solid fa-circle-half-stroke click"></i></a>
               </li>
             </ul>
         </nav>
@@ -51,7 +61,7 @@
             <h1 class="title accent">I'm Nate</h1>
              <p class="header__para">I'm a <b class="accent">frontend software engineer</b> I'm dedicated and always striving to build the very best, and responsive software for todays markets. 
               <br>
-               Here's a bit more <b class="accent"> about me.</b> </p>
+               Here's a bit more <b class="accent click" onclick="toggleModal()"> about me.</b> </p>
                <div class="social__list">
                 <a href="" target="_blank" class="social__link click">
                   <i class="fa-brands fa-linkedin-in"></i>
@@ -65,9 +75,11 @@
                </div>
           </div>
         </header>
-        <button class="email__btn click">
-          <i class="fa-solid fa-envelope"></i>
-        </button>
+        <a href="#">
+          <button class="email__btn click" onclick="toggleModal()" >
+            <i class="fa-solid fa-envelope"></i>
+          </button>
+        </a>
         <a href="#projects" class="scroll">
           <div class="scroll__icon click"></div>
         </a>
@@ -98,8 +110,48 @@
               </figure>
             </div>
           </div>
-          <div class="modal__half modal__contact">Lets have a chat</div>
+          <div class="modal__half modal__contact">
+            <i class="fas fa-times modal__exit click" onclick="toggleModal()"></i>
+            <h3 class="modal__title modal__title--contact">
+              Lets have a chat
+            </h3>
+            <h3 class="modal__sub-title modal__sub-title--contact">
+              I would love to hear from you
+            </h3>
+            <form id="contact__form" onsubmit="contact(event)">
+              <div class="form__item">
+                <label class="form__item--label">Name</label>
+                <input class="input" name="user_name" type="text" required> </input>
+              </div>
+              <div class="form__item">
+                <label class="form__item--label">Email</label>
+                <input class="input" name="user_email" type="email" required></input>
+              </div>
+              <div class="form__item">
+                <label class="form__item--label">Message</label>
+                <textarea class="input" name="message" type="text" required></textarea>
+              </div>
+              <button id="contact__submit" class="form__submit">
+                Send it my way
+              </button>
+            </form>
+            <div class="modal__overlay modal__overlay--loading">
+              <i class="fas fa-spinner"></i>
+            </div>
+            <div class="modal__overlay modal__overlay--success">
+              Thanks for the message! Looking forward to speaking with you soon
+            </div>
+          </div>
         </div>
+        <img src="./assets/semi circle.svg" class="shape shape--0">
+        <img src="./assets/circle.svg" class="shape shape--1">
+        <img src="./assets/squiggly.svg" class="shape shape--2">
+        <img src="./assets/circle.svg" class="shape shape--3">
+        <img src="./assets/triangle.svg" class="shape shape--4">
+        <img src="./assets/circle.svg" class="shape shape--5">
+        <img src="./assets/squiggly.svg" class="shape shape--6">
+        <img src="./assets/circle.svg" class="shape shape--7">
+        <img src="./assets/semi circle.svg" class="shape shape--8">
     </section>
     <section id="projects">
       <div class="container">
@@ -207,7 +259,7 @@
           ">Linkedin</a>
           
           
-          <a href="#" class="
+          <a href="#" onclick="toggleModal()" class="
           footer__social--link
           link__hover-effect
           link__hover-effect--white

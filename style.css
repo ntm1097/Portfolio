@@ -631,6 +631,7 @@ SHAPES
 
 .shape {
   position: fixed;
+  z-index: 0;
 }
 
 .shape--0 {
